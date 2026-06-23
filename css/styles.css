@@ -441,6 +441,8 @@ em { font-style: italic; }
 .guarantee p { color: var(--slate); font-weight: 300; font-size: 0.93rem; line-height: 1.5; }
 
 /* ------------------------------ PROCESS ------------------------------ */
+.process { padding-block: clamp(44px, 7vw, 96px); }
+.split { padding-block: clamp(44px, 7vw, 96px); }
 .steps { list-style: none; display: grid; gap: 1rem; }
 .step { padding: clamp(22px,3vw,28px); display: grid; gap: 0.4rem; transition: border-color 0.3s, transform 0.3s var(--ease), box-shadow 0.3s; }
 .step:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
@@ -492,9 +494,7 @@ em { font-style: italic; }
 .calendly-placeholder__foot { text-align: center; margin-top: 1rem; font-size: 0.72rem; color: var(--mist); }
 
 /* ------------------------------ FOOTER (dark anchor, Awwwards-style) ------------------------------ */
-.footer { position: relative; background: #0a1424; color: #c2cfe0; padding-block: clamp(64px, 9vw, 120px) 26px; overflow: hidden; isolation: isolate; min-height: 100vh; min-height: 100svh; display: flex; }
-/* breaker: the dark emerges softly out of the light page above */
-.footer::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 160px; background: linear-gradient(180deg, rgba(10,20,36,0) 0%, #0a1424 92%); pointer-events: none; z-index: 1; }
+.footer { position: relative; background: linear-gradient(180deg, rgba(10,20,36,0) 0%, #0a1424 12%); color: #c2cfe0; padding-block: clamp(64px, 9vw, 120px) 26px; overflow: hidden; isolation: isolate; min-height: 100vh; min-height: 100svh; display: flex; }
 /* faint atmospheric glow so the slab isn't flat */
 .footer::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
   background: radial-gradient(110% 80% at 12% 0%, rgba(63,142,216,0.18), transparent 55%),
