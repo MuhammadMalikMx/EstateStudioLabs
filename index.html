@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EstateStudioLabs, Own your market</title>
+  <meta name="description" content="Lead-generating websites for US real estate agents and brokers. Rank on Google, capture your own leads, own your brand, instead of renting them from Zillow." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="EstateStudioLabs, Websites for Realtors" />
+  <meta property="og:description" content="Custom real estate websites that generate leads. Built for agents and brokers." />
+  <meta property="og:image" content="assets/Logo Black.png" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/FavIcon.svg" />
+  <link rel="icon" type="image/png" href="assets/favicon gold.png" />
+
+  <!-- Lyon Display (editorial serif) + Suisse Intl (UI) loaded locally · Roboto Mono (labels) · Allura (cursive) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&family=Allura&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Dreamy moving sky, WebGL gradient-mesh shader paints here; CSS gradient is the fallback -->
+  <canvas id="sky" class="sky" aria-hidden="true"></canvas>
+  <div class="sky-veil" aria-hidden="true"></div>
+
+  <!-- Cursor: native pointer stays; the sky glows under it, and links pop a label to the right -->
+  <div class="cursor-pop" aria-hidden="true"><span class="cursor-pop__label"></span></div>
+
+  <!-- ============================== NAV ============================== -->
+  <header class="nav" id="nav">
+    <div class="nav__inner container">
+      <a href="#main" class="logo" aria-label="EstateStudioLabs home" data-cursor>
+        <img src="assets/Logo Black.svg" alt="EstateStudioLabs" class="logo__img" />
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#pain" data-cursor>Problem</a>
+        <a href="#cost" data-cursor>Zillow math</a>
+        <a href="#demo" data-cursor>Live demo</a>
+        <a href="#offer" data-cursor>Pricing</a>
+        <a href="#faq" data-cursor>FAQ</a>
+      </nav>
+      <div class="nav__actions">
+        <a href="#book" class="pill pill--ink pill--sm" data-cursor="Book">Book a call <span class="arrow">→</span></a>
+      </div>
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav__drawer" id="navDrawer" aria-hidden="true">
+      <a href="#pain">Problem</a>
+      <a href="#cost">Zillow math</a>
+      <a href="#demo">Live demo</a>
+      <a href="#offer">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#book" class="pill pill--ink">Book a discovery call <span class="arrow">→</span></a>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============================== HERO ============================== -->
+    <section class="hero" id="hero">
+      <div class="container hero__inner">
+        <span class="promo-pill reveal" data-cursor>
+          <span class="promo-pill__dot"></span>Now booking, June 2026 · 14-day delivery
+        </span>
+
+        <h1 class="hero__title reveal">
+          <span class="hero__line hero__line--top">
+            <span class="logo-stack" aria-hidden="true">
+              <span class="logo-tile logo-tile--zillow"><img src="assets/zillow.svg" alt="" /></span>
+              <span class="logo-tile logo-tile--realtor"><img src="assets/Realtor.com_2015_icon.svg" alt="" /></span>
+            </span>
+            <span class="hero__title-txt"><span class="sr-only">Zillow and Realtor.com </span>aren't the answer.</span>
+          </span>
+          <span class="hero__line hero__line--bottom">
+            <span class="noun">Your&nbsp;website
+              <span class="brand-ic brand-ic--web" title="A site you own">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#2f6db0" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/></svg>
+              </span>
+            </span>
+            <span class="noun">systems
+              <span class="brand-ic brand-ic--meta" title="Meta Ads">
+                <svg viewBox="0 0 24 24"><rect width="24" height="24" rx="6.5" fill="#0866FF"/><path fill="#fff" d="M15.45 12.55 15.86 9.9h-2.53V8.18c0-.73.36-1.44 1.5-1.44h1.18V4.49s-1.07-.18-2.1-.18c-2.14 0-3.54 1.3-3.54 3.65V9.9H8.05v2.65h2.32V19h2.86v-6.45z"/></svg>
+              </span>
+              <span class="brand-ic brand-ic--google" title="Google">
+                <svg viewBox="0 0 24 24"><path fill="#4285F4" d="M23 12.27c0-.79-.07-1.54-.2-2.27H12v4.51h6.19c-.27 1.44-1.08 2.66-2.3 3.48v2.89h3.72C21.78 18.99 23 15.92 23 12.27z"/><path fill="#34A853" d="M12 24c3.11 0 5.72-1.03 7.62-2.79l-3.72-2.89c-1.03.69-2.35 1.1-3.9 1.1-3 0-5.54-2.03-6.45-4.75H1.71v2.98C3.6 21.4 7.5 24 12 24z"/><path fill="#FBBC05" d="M5.55 14.67c-.23-.69-.36-1.43-.36-2.19s.13-1.5.36-2.19V7.31H1.71A11.98 11.98 0 0 0 .44 12.48c0 1.94.46 3.77 1.27 5.17l3.84-2.98z"/><path fill="#EA4335" d="M12 4.75c1.69 0 3.21.58 4.4 1.72l3.3-3.3C17.72 1.2 15.11 0 12 0 7.5 0 3.6 2.6 1.71 6.49l3.84 2.98C6.46 6.76 9 4.75 12 4.75z"/></svg>
+              </span>
+            </span>
+            <span class="hero__amp">&amp;</span>
+            <span class="noun">personal&nbsp;branding
+              <span class="brand-ic brand-ic--ig" title="Instagram">
+                <svg viewBox="0 0 24 24">
+                  <defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0">
+                    <stop offset="0" stop-color="#FEDA75"/><stop offset=".25" stop-color="#FA7E1E"/>
+                    <stop offset=".5" stop-color="#D62976"/><stop offset=".75" stop-color="#962FBF"/>
+                    <stop offset="1" stop-color="#4F5BD5"/></linearGradient></defs>
+                  <rect x="1.5" y="1.5" width="21" height="21" rx="6.4" fill="url(#ig)"/>
+                  <rect x="6" y="6" width="12" height="12" rx="4" fill="none" stroke="#fff" stroke-width="1.9"/>
+                  <circle cx="12" cy="12" r="2.7" fill="none" stroke="#fff" stroke-width="1.9"/>
+                  <circle cx="17.1" cy="6.9" r="1.15" fill="#fff"/>
+                </svg>
+              </span>
+            </span>
+            <span class="hero__title-txt">are.</span>
+          </span>
+        </h1>
+
+        <p class="hero__sub reveal">
+          We build editorial, lead-generating websites for agents and brokers, so your
+          name ranks, your leads stay <em>yours</em>, and your brand sells around the clock.
+          Own the machine instead of renting the lead.
+        </p>
+
+        <div class="hero__cta reveal">
+          <a href="#demo" class="pill pill--ink" data-cursor="See it">See it in action <span class="arrow">→</span></a>
+          <a href="#book" class="pill pill--glow" data-cursor="Book">Book a discovery call</a>
+        </div>
+
+        <div class="hero__stats glass glass--liquid reveal">
+          <div class="stat">
+            <span class="stat__num" data-count="15" data-suffix="%">0%</span>
+            <span class="stat__label">Your site converts 10–20%. Zillow leads: 0.5–1%.</span>
+          </div>
+          <div class="stat">
+            <span class="stat__num" data-count="0" data-prefix="$">$0</span>
+            <span class="stat__label">Cost per lead once it's built and ranking.</span>
+          </div>
+          <div class="stat">
+            <span class="stat__num" data-count="24" data-suffix="/7">0/7</span>
+            <span class="stat__label">Selling while you sleep, show, and close.</span>
+          </div>
+        </div>
+      </div>
+      <a href="#pain" class="hero__scroll reveal" aria-label="Scroll" data-cursor><span></span></a>
+    </section>
+
+    <!-- ============================== TRUST MARQUEE ============================== -->
+    <section class="trust" aria-label="Industry fluency">
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__track">
+          <span>GCI</span><i>/</i><span>IDX</span><i>/</i><span>SOI</span><i>/</i><span>CMA</span><i>/</i>
+          <span>SPEED&nbsp;TO&nbsp;LEAD</span><i>/</i><span>NAR&nbsp;2024</span><i>/</i><span>DRIP</span><i>/</i>
+          <span>CRM&nbsp;WEBHOOKS</span><i>/</i><span>CPA</span><i>/</i><span>LISTING&nbsp;AGREEMENT</span><i>/</i><span>BRA</span><i>/</i>
+          <span>GCI</span><i>/</i><span>IDX</span><i>/</i><span>SOI</span><i>/</i><span>CMA</span><i>/</i>
+          <span>SPEED&nbsp;TO&nbsp;LEAD</span><i>/</i><span>NAR&nbsp;2024</span><i>/</i><span>DRIP</span><i>/</i>
+          <span>CRM&nbsp;WEBHOOKS</span><i>/</i><span>CPA</span><i>/</i><span>LISTING&nbsp;AGREEMENT</span><i>/</i><span>BRA</span><i>/</i>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== THE PROBLEM ============================== -->
+    <section class="section pain" id="pain">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="mono-label">The problem</p>
+          <h2 class="section__title"><span class="ital">Renting</span> your business<br />from people who don't know your name.</h2>
+          <p class="section__lede">Every month you pay platforms that put their brand first, share your leads with rivals, and can cut you off any time. Here's where it leaks.</p>
+        </div>
+
+        <div class="pain__grid">
+          <article class="feat-card feat-card--sky reveal" data-cursor>
+            <p class="feat-card__tag">No personal brand</p>
+            <h3 class="feat-card__title">Your brokerage site works for them</h3>
+            <p class="feat-card__body">Leads on a KW/RE-MAX/eXp template route to the brokerage first. Switch firms and your URL, SEO and content vanish overnight.</p>
+            <span class="feat-card__glyph">⌂</span>
+          </article>
+
+          <article class="feat-card feat-card--coral reveal" data-cursor>
+            <p class="feat-card__tag">Shared 3–5 ways</p>
+            <h3 class="feat-card__title">Zillow splits your leads with rivals</h3>
+            <p class="feat-card__body">Premier Agent sells the same lead to 3–5 agents in your ZIP. You're buying a race, at $1,500–5,000 every single month.</p>
+            <span class="feat-card__glyph">⤲</span>
+          </article>
+
+          <article class="feat-card feat-card--gold reveal" data-cursor>
+            <p class="feat-card__tag">No finish line</p>
+            <h3 class="feat-card__title">Your following has nowhere to land</h3>
+            <p class="feat-card__body">54% of agents say social is their best source, but Instagram has no capture. Without a site, every warm prospect evaporates.</p>
+            <span class="feat-card__glyph">♡</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== COST, scroll-linked drain graphic ============================== -->
+    <section class="cost" id="cost" aria-label="What Zillow costs you over five years">
+      <div class="cost__rail">
+        <div class="cost__sticky">
+          <div class="container cost__inner">
+            <div class="cost__head">
+              <p class="mono-label">The number nobody runs</p>
+              <h2 class="section__title">Watch what Zillow <span class="ital">actually</span> takes.</h2>
+              <p class="section__lede">Five years, side by side. Red is rent you'll never get back. Green is the asset you own, building while you sleep.</p>
+            </div>
+
+            <figure class="cost__chart glass glass--liquid">
+              <div class="cost__readout">
+                <div class="cost__metric cost__metric--loss">
+                  <span class="cost__metric-label"><span class="cost__swatch cost__swatch--loss"></span>Paid to Zillow</span>
+                  <span class="cost__metric-num" id="costLoss">$0</span>
+                </div>
+                <div class="cost__year">Year <span id="costYear">1</span> of 5</div>
+                <div class="cost__metric cost__metric--gain">
+                  <span class="cost__metric-label"><span class="cost__swatch cost__swatch--gain"></span>Your site builds</span>
+                  <span class="cost__metric-num" id="costGain">$0</span>
+                </div>
+              </div>
+
+              <svg class="cost__svg" id="costSvg" viewBox="0 0 1000 460" preserveAspectRatio="none" role="img"
+                   aria-label="Cumulative cost paid to Zillow climbing in red versus value built by an owned website rising in green over five years.">
+                <defs>
+                  <linearGradient id="lossFill" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#e8584f" stop-opacity="0.42"/>
+                    <stop offset="1" stop-color="#e8584f" stop-opacity="0"/>
+                  </linearGradient>
+                  <linearGradient id="gainFill" x1="0" y1="1" x2="0" y2="0">
+                    <stop offset="0" stop-color="#1fae74" stop-opacity="0.42"/>
+                    <stop offset="1" stop-color="#1fae74" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+
+                <!-- gridlines + baseline injected by JS -->
+                <g id="costGrid"></g>
+
+                <!-- areas (clipped by a sweeping reveal) -->
+                <g id="costClipWrap">
+                  <path id="lossArea" fill="url(#lossFill)" d=""></path>
+                  <path id="gainArea" fill="url(#gainFill)" d=""></path>
+                  <path id="lossLine" fill="none" stroke="#e8584f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d=""></path>
+                  <path id="gainLine" fill="none" stroke="#1fae74" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d=""></path>
+                </g>
+
+                <line id="costSweep" x1="0" y1="20" x2="0" y2="440" stroke="rgba(15,32,56,0.25)" stroke-width="1.5" stroke-dasharray="4 6"></line>
+                <circle id="lossDot" r="6" fill="#e8584f"></circle>
+                <circle id="gainDot" r="6" fill="#1fae74"></circle>
+              </svg>
+
+              <figcaption class="cost__foot">
+                <span class="cost__verdict" id="costVerdict">After 5 years you'd be <strong>$212,000</strong> apart.</span>
+                <span class="cost__disclaimer">Illustrative · $1,500/mo Premier Agent (money gone) vs commissions a site you own earns. Conservative, based on 2026 NAR &amp; Zillow ranges.</span>
+              </figcaption>
+            </figure>
+
+            <a href="#book" class="pill pill--ink pill--lg cost__cta" data-cursor="Book">Stop the bleed <span class="arrow">→</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== REFRAME ============================== -->
+    <section class="section reframe" id="reframe">
+      <div class="container">
+        <div class="section__head section__head--center reveal">
+          <p class="mono-label">The shift</p>
+          <h2 class="section__title">Zillow resets to zero.<br />A website <span class="script">compounds.</span></h2>
+        </div>
+        <div class="reframe__grid">
+          <div class="glass glass--liquid reframe__viz reveal">
+            <p class="mono-label">Where leads actually close</p>
+            <ul class="convbars">
+              <li><span class="convbars__name">Your own site <small>(organic)</small></span><span class="convbars__track"><span class="convbars__fill" data-pct="85" style="--c:var(--sky)"></span></span><span class="convbars__val">10–20%</span></li>
+              <li><span class="convbars__name">Sphere of influence</span><span class="convbars__track"><span class="convbars__fill" data-pct="100" style="--c:var(--teal)"></span></span><span class="convbars__val">25–50%</span></li>
+              <li><span class="convbars__name">Realtor.com leads</span><span class="convbars__track"><span class="convbars__fill" data-pct="14" style="--c:var(--gold)"></span></span><span class="convbars__val">1–3%</span></li>
+              <li><span class="convbars__name">Zillow leads</span><span class="convbars__track"><span class="convbars__fill" data-pct="6" style="--c:var(--coral)"></span></span><span class="convbars__val">0.5–1%</span></li>
+            </ul>
+            <p class="reframe__viz-foot">Source: NAR / industry lead-source conversion ranges.</p>
+          </div>
+          <div class="reframe__copy reveal">
+            <p class="big-stat"><span class="big-stat__num">1</span> extra closing. That's the whole ask.</p>
+            <p class="reframe__body">A closing on a $400K home puts <strong>$7,000–11,000</strong> of GCI in your pocket. The site costs <strong>$1,500 once</strong>. It pays for itself on a single extra deal, then every lead after is pure profit.</p>
+            <ul class="ticklist">
+              <li>Your name ranks. Referrals Google you and find <em>you</em>.</li>
+              <li>Leads hit your phone via CRM webhook in seconds.</li>
+              <li>It appreciates, every review and sold listing compounds.</li>
+            </ul>
+            <a href="#offer" class="link-arrow" data-cursor>See what you get <span>→</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== DEMO ============================== -->
+    <section class="section demo" id="demo">
+      <div class="container">
+        <div class="section__head section__head--center reveal">
+          <p class="mono-label">Feel the difference</p>
+          <h2 class="section__title">This is what your site <span class="ital">does.</span></h2>
+          <p class="section__lede">Not a brochure, a working machine. Live MLS search, instant valuations, and leads routed to you in seconds. Try the real thing.</p>
+        </div>
+
+        <div class="demo__switch reveal" role="tablist" aria-label="Demo features">
+          <button class="demo__pill is-active" role="tab" aria-selected="true" data-demo="idx" data-cursor>IDX search</button>
+          <button class="demo__pill" role="tab" aria-selected="false" data-demo="cma" data-cursor>Home value</button>
+          <button class="demo__pill" role="tab" aria-selected="false" data-demo="speed" data-cursor>Speed-to-lead</button>
+        </div>
+
+        <div class="demo__stage glass glass--liquid reveal">
+          <div class="demo__panel is-active" data-demo="idx">
+            <h3 class="demo__panel-title">Search like Zillow, on <span class="ital">your</span> site</h3>
+            <p class="demo__panel-sub">Visitors never leave for Zillow. They search; you capture the intent.</p>
+            <div class="idx__filters">
+              <label class="chipselect"><span>City</span><select id="idxCity"><option value="austin">Austin, TX</option><option value="phoenix">Phoenix, AZ</option><option value="miami">Miami, FL</option></select></label>
+              <label class="chipselect"><span>Beds</span><select id="idxBeds"><option value="0">Any</option><option value="2">2+</option><option value="3" selected>3+</option><option value="4">4+</option></select></label>
+              <label class="chipselect"><span>Max price</span><select id="idxPrice"><option value="500000">$500k</option><option value="800000" selected>$800k</option><option value="1500000">$1.5M</option><option value="9000000">No max</option></select></label>
+              <button class="pill pill--ink pill--sm" id="idxSearch" data-cursor>Search</button>
+            </div>
+            <p class="idx__count"><span id="idxCount">3</span> homes match, <em>and the searcher is now a captured lead.</em></p>
+            <div class="idx__results" id="idxResults" aria-live="polite"></div>
+          </div>
+
+          <div class="demo__panel" data-demo="cma">
+            <div class="cma">
+              <div class="cma__form">
+                <h3 class="demo__panel-title">The seller magnet: instant value</h3>
+                <p class="demo__panel-sub">One tool replaces BoldLeads. Homeowners type an address; you get a warm seller lead.</p>
+                <label class="field field--text"><span class="field__label">Property address</span><input type="text" id="cmaAddr" placeholder="123 Oak St, Austin TX" value="1200 Barton Springs Rd" /></label>
+                <button class="pill pill--ink pill--block" id="cmaBtn" data-cursor>Get my home value <span class="arrow">→</span></button>
+                <p class="cma__trust">No spam, just the estimate, and a reason to call you.</p>
+              </div>
+              <div class="cma__result" id="cmaResult" aria-live="polite">
+                <p class="mono-label">Estimated value</p>
+                <p class="cma__est" id="cmaEst">$ –</p>
+                <div class="cma__range"><span>Low <b id="cmaLow">–</b></span><span>High <b id="cmaHigh">–</b></span></div>
+                <p class="cma__captured" id="cmaCaptured" hidden>✦ Seller lead captured → pushed to your CRM &amp; phone instantly.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="demo__panel" data-demo="speed">
+            <h3 class="demo__panel-title">First to respond wins 35–50%</h3>
+            <p class="demo__panel-sub">Watch a lead travel from your site to your hand.</p>
+            <ol class="speed__flow" id="speedFlow">
+              <li class="speed__step" data-step="1"><span class="speed__dot"></span><div><strong>0:00</strong> Visitor submits the form on your site</div></li>
+              <li class="speed__step" data-step="2"><span class="speed__dot"></span><div><strong>0:01</strong> Webhook fires into your CRM (Follow Up Boss)</div></li>
+              <li class="speed__step" data-step="3"><span class="speed__dot"></span><div><strong>0:03</strong> Auto-text + email greet them by name</div></li>
+              <li class="speed__step" data-step="4"><span class="speed__dot"></span><div><strong>0:05</strong> Your phone rings with their number on screen</div></li>
+            </ol>
+            <button class="pill pill--ghost pill--sm" id="speedReplay" data-cursor>Replay ↻</button>
+          </div>
+        </div>
+
+        <div class="demo__portfolio reveal">
+          <p class="mono-label demo__portfolio-label">Real demo sites drop in here</p>
+          <div class="demo__portfolio-grid">
+            <a class="portfolio-frame" href="#"><span class="portfolio-frame__bar"></span><span class="portfolio-frame__label">Luxury · Austin, <em>demo coming</em></span></a>
+            <a class="portfolio-frame" href="#"><span class="portfolio-frame__bar"></span><span class="portfolio-frame__label">First-time buyers · Phoenix, <em>demo coming</em></span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== SPLIT ============================== -->
+    <section class="section split" id="who">
+      <div class="container">
+        <div class="section__head section__head--center reveal">
+          <p class="mono-label">Built for your seat</p>
+          <h2 class="section__title">One studio. <span class="ital">Two</span> kinds of client.</h2>
+        </div>
+        <div class="split__grid">
+          <article class="glass glass--liquid split-card reveal" data-cursor>
+            <p class="mono-label">For agents</p>
+            <h3 class="split-card__title">Your name. Your leads. Your ranking.</h3>
+            <ul class="ticklist">
+              <li>A personal brand that outlives any brokerage</li>
+              <li>Lead capture wired to your CRM and phone</li>
+              <li>Ranks on Google for your name before they call</li>
+            </ul>
+            <a href="#offer" class="link-arrow" data-cursor>Agent packages <span>→</span></a>
+          </article>
+          <article class="glass glass--liquid split-card reveal" data-cursor>
+            <p class="mono-label">For brokers</p>
+            <h3 class="split-card__title">Win clients <em>and</em> recruit agents.</h3>
+            <ul class="ticklist">
+              <li>A site that doesn't look like 50 other KW offices</li>
+              <li>A recruitment page that sells your splits &amp; culture</li>
+              <li>Buyer, seller &amp; recruit lead flows, kept local</li>
+            </ul>
+            <a href="#offer" class="link-arrow" data-cursor>Brokerage packages <span>→</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== OFFER ============================== -->
+    <section class="section offer" id="offer">
+      <div class="container">
+        <div class="section__head section__head--center reveal">
+          <p class="mono-label">The offer</p>
+          <h2 class="section__title">An <span class="ital">unfair</span> trade, on purpose.</h2>
+          <p class="section__lede">Pay once. Own it forever. Priced so one closing covers it 3–7×, we'd rather you win and refer us.</p>
+        </div>
+        <div class="offer__grid">
+          <article class="glass glass--liquid price-card reveal" data-cursor>
+            <p class="price-card__badge">Most popular</p>
+            <h3 class="price-card__name">Agent Website</h3>
+            <p class="price-card__price"><span>from</span>$999<small>once</small></p>
+            <p class="price-card__delivery">14-day delivery · 1 revision round</p>
+            <ul class="ticklist">
+              <li>5 custom pages, mobile-first</li>
+              <li>Lead capture → inbox &amp; CRM</li>
+              <li>IDX home search built in</li>
+              <li>Basic SEO + schema + Google Business Profile</li>
+              <li>Social graphics &amp; custom domain handled</li>
+            </ul>
+            <a href="#book" class="pill pill--ink pill--block" data-cursor="Start">Start my site <span class="arrow">→</span></a>
+          </article>
+          <article class="glass glass--liquid price-card price-card--feature reveal" data-cursor>
+            <p class="price-card__badge price-card__badge--alt">Best value</p>
+            <h3 class="price-card__name">Brokerage Website</h3>
+            <p class="price-card__price"><span>from</span>$1,999<small>once</small></p>
+            <p class="price-card__delivery">21-day delivery · 2 revision rounds</p>
+            <ul class="ticklist">
+              <li>Everything in Agent, plus</li>
+              <li>Team / agent roster pages</li>
+              <li>“Join our team” recruitment funnel</li>
+              <li>Buyer, seller &amp; recruit flows</li>
+              <li>Featured listings carousel</li>
+            </ul>
+            <a href="#book" class="pill pill--ink pill--block" data-cursor="Grow">Grow my brokerage <span class="arrow">→</span></a>
+          </article>
+        </div>
+
+        <div class="offer__addons reveal">
+          <p class="mono-label offer__addons-label">Included, no extra charge</p>
+          <div class="addons addons--incl">
+            <div class="addon"><strong>IDX home search</strong><span>built in</span></div>
+            <div class="addon"><strong>Basic SEO + schema</strong><span>built in</span></div>
+            <div class="addon"><strong>Social graphics</strong><span>built in</span></div>
+            <div class="addon"><strong>Lead capture + CRM</strong><span>built in</span></div>
+          </div>
+          <p class="mono-label offer__addons-label offer__addons-label--mt">Optional, stack on when ready</p>
+          <div class="addons addons--opt">
+            <div class="addon"><strong>Maintenance &amp; hosting</strong><span>$49/mo</span></div>
+            <div class="addon"><strong>In-depth local SEO</strong><span>$200–300/mo</span></div>
+          </div>
+          <p class="offer__addons-note">Only pass-through cost is your state's MLS / IDX database access fee, billed at cost, never marked up.</p>
+        </div>
+
+        <div class="guarantee glass glass--liquid reveal">
+          <div class="guarantee__seal">✓</div>
+          <div>
+            <h3 class="guarantee__title">The no-debate guarantee</h3>
+            <p>If we don't deliver what we promised in the agreed timeline, your deposit comes straight back. No debate, no fine print.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== PROCESS ============================== -->
+    <section class="section process" id="process">
+      <div class="container">
+        <div class="section__head section__head--center reveal">
+          <p class="mono-label">How it works</p>
+          <h2 class="section__title">From call to launch in <span class="ital">two</span> weeks.</h2>
+        </div>
+        <ol class="steps">
+          <li class="step glass reveal" data-cursor><span class="step__no">01</span><h3>Discovery call</h3><p>15 minutes on your market, niche &amp; lead flow.</p></li>
+          <li class="step glass reveal" data-cursor><span class="step__no">02</span><h3>Proposal + deposit</h3><p>Fixed scope, price, date. 50% to begin.</p></li>
+          <li class="step glass reveal" data-cursor><span class="step__no">03</span><h3>We build</h3><p>Design, copy, SEO, capture, IDX, done for you.</p></li>
+          <li class="step glass reveal" data-cursor><span class="step__no">04</span><h3>Review</h3><p>You walk it. We refine until it's right.</p></li>
+          <li class="step glass reveal" data-cursor><span class="step__no">05</span><h3>Launch</h3><p>Live on your domain, with a how-to loom.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============================== PROOF ============================== -->
+    <section class="section proof" id="proof">
+      <div class="container">
+        <div class="section__head section__head--center reveal">
+          <p class="mono-label">What clients say</p>
+          <h2 class="section__title">Proof, not <span class="ital">promises.</span></h2>
+        </div>
+        <div class="proof__grid">
+          <figure class="glass glass--liquid quote reveal" data-cursor><blockquote>“My first referral that Googled me actually <em>found</em> me, and booked before we ever spoke.”</blockquote><figcaption><span class="quote__avatar"></span><span><strong>Your name here</strong><small>Realtor · Austin, TX</small></span></figcaption></figure>
+          <figure class="glass glass--liquid quote reveal" data-cursor><blockquote>“We dropped $1,800/mo on Zillow. One closing from our own site paid for the whole thing.”</blockquote><figcaption><span class="quote__avatar"></span><span><strong>Your name here</strong><small>Managing Broker · Phoenix, AZ</small></span></figcaption></figure>
+          <figure class="glass glass--liquid quote reveal" data-cursor><blockquote>“It finally looks like the calibre of client I want. My listings present like a $10M brand.”</blockquote><figcaption><span class="quote__avatar"></span><span><strong>Your name here</strong><small>Luxury Agent · Miami, FL</small></span></figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== FAQ ============================== -->
+    <section class="section faq" id="faq">
+      <div class="container">
+        <div class="section__head section__head--center reveal">
+          <p class="mono-label">Straight answers</p>
+          <h2 class="section__title">The objections, handled.</h2>
+        </div>
+        <div class="accordion reveal">
+          <details class="acc"><summary data-cursor>“I already have a Zillow profile.”<span class="acc__icon"></span></summary><p>That profile sends leads to Zillow. When someone Googles your name after, where do they land? A site you own is where the relationship becomes <em>yours</em>.</p></details>
+          <details class="acc"><summary data-cursor>“I get all my business from referrals.”<span class="acc__icon"></span></summary><p>Referrals are gold, until they Google you and find nothing. A professional site turns a warm referral into a warm call.</p></details>
+          <details class="acc"><summary data-cursor>“My brokerage gives me a free website.”<span class="acc__icon"></span></summary><p>That site promotes the brokerage, not you. Leads route to them first, and switching firms means losing your URL, SEO and content. A personal site is portable and permanent.</p></details>
+          <details class="acc"><summary data-cursor>“A website didn't work for me before.”<span class="acc__icon"></span></summary><p>If it had no capture, no IDX and no SEO, it was a business card, not a lead machine. Those are built completely differently.</p></details>
+          <details class="acc"><summary data-cursor>“I can't afford it right now.”<span class="acc__icon"></span></summary><p>One closing pays for this 3–7× over. It's not speculative spend, it's investing a single commission in a tool that generates commissions indefinitely.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== BOOK ============================== -->
+    <section class="section book" id="book">
+      <div class="container book__inner">
+        <div class="book__copy reveal">
+          <p class="mono-label">Let's see if it's a fit</p>
+          <h2 class="book__title">15 minutes. No pressure.<br />We'll show you <span class="script">exactly</span> what we'd build.</h2>
+          <p class="book__sub">Bring your market and current lead setup. You'll leave with a clear picture of your site, whether or not you ever hire us.</p>
+          <ul class="book__list">
+            <li>We review your current online presence</li>
+            <li>We map what we'd build for your niche</li>
+            <li>You decide, zero obligation</li>
+          </ul>
+          <p class="book__email">Prefer email? <a href="mailto:hello@estatestudiolabs.com" data-cursor>hello@estatestudiolabs.com</a></p>
+          <p class="signature">the EstateStudioLabs promise</p>
+        </div>
+        <div class="book__widget reveal">
+          <div class="calendly-placeholder glass glass--liquid">
+            <p class="mono-label"><span class="dot-live"></span> Discovery call · 15 min</p>
+            <p class="calendly-placeholder__title">Pick a time that suits you</p>
+            <div class="calendly-placeholder__grid">
+              <button class="slot" data-cursor>Mon · 10:00</button>
+              <button class="slot" data-cursor>Mon · 14:30</button>
+              <button class="slot is-on" data-cursor>Tue · 11:00</button>
+              <button class="slot" data-cursor>Wed · 09:30</button>
+              <button class="slot" data-cursor>Wed · 16:00</button>
+              <button class="slot" data-cursor>Thu · 13:00</button>
+            </div>
+            <a href="mailto:hello@estatestudiolabs.com" class="pill pill--ink pill--block" data-cursor="Confirm">Confirm discovery call <span class="arrow">→</span></a>
+            <p class="calendly-placeholder__foot">Calendly embeds here, see README.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__lead">
+          <p class="footer__eyebrow"><span class="footer__pulse"></span>Booking June 2026</p>
+          <h2 class="footer__cta">Own your market while the rest <span class="footer__ital">rent theirs.</span></h2>
+          <a href="#book" class="pill pill--light pill--lg" data-cursor="Book">Book a discovery call <span class="arrow">→</span></a>
+        </div>
+        <div class="footer__cols">
+          <div class="footer__col">
+            <span class="footer__label">Studio</span>
+            <a href="mailto:hello@estatestudiolabs.com" data-cursor="Email">hello@estatestudiolabs.com</a>
+            <span class="footer__muted">Remote, serving US real estate</span>
+          </div>
+          <div class="footer__col">
+            <span class="footer__label">Follow</span>
+            <a href="#" data-cursor="Open">Instagram</a>
+            <a href="#" data-cursor="Open">LinkedIn</a>
+          </div>
+          <div class="footer__col">
+            <span class="footer__label">Secure &amp; trusted</span>
+            <span class="footer__muted">Payoneer · USDT</span>
+            <span class="footer__muted">DocuSign contracts</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__brandmark" aria-hidden="true">
+        <img src="assets/Logo White.svg" alt="" />
+      </div>
+
+      <div class="footer__bottom">
+        <span>© 2026 EstateStudioLabs. All rights reserved.</span>
+        <a href="#main" class="footer__totop" data-cursor="Top">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
