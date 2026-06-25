@@ -206,6 +206,9 @@ em { font-style: italic; }
 .nav__actions { display: none; align-items: center; gap: 1.2rem; }
 .nav__login { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--slate); transition: color 0.2s; }
 .nav__login:hover { color: var(--ink); }
+.nav__phone { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.08em; color: var(--slate); transition: color 0.2s; white-space: nowrap; }
+.nav__phone:hover { color: var(--sky-deep); }
+.nav--on-dark .nav__phone { color: rgba(255,255,255,0.75); }
 
 .nav__toggle { display: flex; flex-direction: column; gap: 5px; padding: 8px; }
 .nav__toggle span { width: 24px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform 0.3s var(--ease), opacity 0.2s; }
@@ -485,6 +488,8 @@ em { font-style: italic; }
 .book__email a { color: var(--sky-deep); border-bottom: 1px solid var(--line-2); }
 .signature { font-family: var(--font-script); font-size: 2.6rem; color: var(--gold-deep); margin-top: 1rem; line-height: 1; }
 
+.calendly-wrap { overflow: hidden; padding: 0; }
+.calendly-inline-widget { display: block; }
 .calendly-placeholder { padding: clamp(24px, 4vw, 34px); }
 .calendly-placeholder__title { font-family: var(--font-display); font-size: 1.38rem; font-weight: 400; color: var(--ink); margin: 0.4rem 0 1.3rem; letter-spacing: -0.015em; }
 .calendly-placeholder__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.7rem; margin-bottom: 1.4rem; }
@@ -556,7 +561,7 @@ em { font-style: italic; }
 @media (min-width: 960px) {
   .nav__links, .nav__actions { display: flex; }
   .nav__toggle, .nav__drawer { display: none; }
-  .book__inner { grid-template-columns: 1.05fr 0.95fr; align-items: center; }
+  .book__inner { grid-template-columns: 1.05fr 0.95fr; align-items: start; }
   .steps { grid-template-columns: repeat(5, 1fr); }
 }
 @media (prefers-reduced-motion: reduce) {
