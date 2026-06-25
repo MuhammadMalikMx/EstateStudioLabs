@@ -477,6 +477,7 @@ em { font-style: italic; }
 .acc p em { color: var(--ink); font-style: italic; }
 
 /* ------------------------------ BOOK ------------------------------ */
+.book { padding-block-end: clamp(28px, 4vw, 52px); }
 .book { position: relative; overflow: hidden; }
 .book__inner { position: relative; z-index: 1; display: grid; gap: clamp(36px, 5vw, 56px); }
 .book__title { font-family: var(--font-display); font-size: clamp(1.9rem, 4.8vw, 3rem); font-weight: 400; line-height: 1.1; color: var(--ink); letter-spacing: -0.025em; }
