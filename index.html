@@ -6,7 +6,7 @@
 
   <!-- ===== SEO CORE ===== -->
   <title>EstateStudioLabs | Real Estate Websites for Agents and Brokers</title>
-  <meta name="description" content="Website design for US real estate agents and brokers. Lead-generating sites that rank on Google and capture buyers and sellers. Call +1 214 910 5909." />
+  <meta name="description" content="Estate Studio Labs builds lead-generating websites for US real estate agents and brokers. Rank on Google, capture buyers and sellers. Call +1 214 910 5909." />
   <meta name="keywords" content="estate studio labs, estate studio, real estate website design, realtor website, IDX website, real estate lead generation, website for real estate agent, real estate agent website builder, website for realtors, real estate broker website" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <meta name="author" content="EstateStudioLabs" />
@@ -120,14 +120,21 @@
   </script>
 
   <!-- ===== FAVICONS ===== -->
+  <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48" />
   <link rel="icon" type="image/svg+xml" href="assets/FavIcon.svg" />
   <link rel="icon" type="image/png" href="assets/favicon gold.png" />
   <link rel="apple-touch-icon" href="assets/favicon gold.png" />
 
-  <!-- Lyon Display (editorial serif) + Suisse Intl (UI) loaded locally · Roboto Mono (labels) · Allura (cursive) -->
+  <!-- ===== CRITICAL FONT PRELOADS (WOFF2 served first; TTF/OTF as fallback) ===== -->
+  <link rel="preload" href="fonts/LyonDisplay-Regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/SuisseIntl-Regular.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/SuisseIntl-Light.woff2" as="font" type="font/woff2" crossorigin />
+
+  <!-- Google Fonts (Roboto Mono + Allura) loaded async — not in the critical render path -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&family=Allura&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&family=Allura&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&family=Allura&display=swap" /></noscript>
 
   <link rel="stylesheet" href="css/styles.css" />
 </head>
@@ -593,8 +600,7 @@
         <div class="book__widget reveal">
           <div class="calendly-wrap glass glass--liquid">
             <!-- Calendly inline widget begin -->
-            <div class="calendly-inline-widget" data-url="https://calendly.com/hq-estatestudiolabs/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=ffffff&text_color=0f2038&primary_color=3f8ed8" style="min-width:320px;height:600px;"></div>
-            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+            <div class="calendly-inline-widget" data-url="https://calendly.com/hq-estatestudiolabs/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=ffffff&text_color=0f2038&primary_color=3f8ed8" style="min-width:320px;height:600px;" data-lazy-calendly></div>
             <!-- Calendly inline widget end -->
           </div>
         </div>
@@ -661,5 +667,28 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="js/script.js"></script>
+  <script>
+    (function(){
+      var widget = document.querySelector('[data-lazy-calendly]');
+      if (!widget) return;
+      var loaded = false;
+      function loadCalendly() {
+        if (loaded) return;
+        loaded = true;
+        var s = document.createElement('script');
+        s.src = 'https://assets.calendly.com/assets/external/widget.js';
+        s.async = true;
+        document.head.appendChild(s);
+      }
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function(entries) {
+          if (entries[0].isIntersecting) { loadCalendly(); io.disconnect(); }
+        }, { rootMargin: '300px' });
+        io.observe(widget);
+      } else {
+        loadCalendly();
+      }
+    })();
+  </script>
 </body>
 </html>
