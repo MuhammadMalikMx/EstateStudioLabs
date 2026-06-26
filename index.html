@@ -64,6 +64,10 @@
           "Google Business Profile setup",
           "Real estate digital marketing",
           "Realtor personal branding"
+        ],
+        "sameAs": [
+          "https://www.instagram.com/estatestudiolabs/",
+          "https://www.linkedin.com/company/estatestudiolabs"
         ]
       },
       {
@@ -643,8 +647,8 @@
           </div>
           <div class="footer__col">
             <span class="footer__label">Follow</span>
-            <a href="#" data-cursor="Open">Instagram</a>
-            <a href="#" data-cursor="Open">LinkedIn</a>
+            <a href="https://www.instagram.com/estatestudiolabs/" target="_blank" rel="noopener" data-cursor="Open">Instagram</a>
+            <a href="https://www.linkedin.com/company/estatestudiolabs" target="_blank" rel="noopener" data-cursor="Open">LinkedIn</a>
           </div>
           <div class="footer__col">
             <span class="footer__label">Secure &amp; trusted</span>
@@ -680,14 +684,15 @@
         s.async = true;
         document.head.appendChild(s);
       }
+      /* Trigger on scroll proximity */
       if ('IntersectionObserver' in window) {
         var io = new IntersectionObserver(function(entries) {
           if (entries[0].isIntersecting) { loadCalendly(); io.disconnect(); }
-        }, { rootMargin: '300px' });
+        }, { rootMargin: '400px' });
         io.observe(widget);
-      } else {
-        loadCalendly();
       }
+      /* Hard fallback: load after 4 s regardless of scroll position */
+      setTimeout(loadCalendly, 4000);
     })();
   </script>
 </body>
