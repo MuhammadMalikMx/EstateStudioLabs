@@ -503,12 +503,48 @@ em { font-style: italic; }
 .book__list { list-style: none; display: grid; gap: 0.7rem; margin-top: 1.6rem; }
 .book__list li { position: relative; padding-left: 1.8rem; color: var(--slate); font-weight: 300; }
 .book__list li::before { content: "→"; position: absolute; left: 0; color: var(--sky); }
+/* Quick contact form (with optional SMS consent) */
+.qform { margin-top: 1.8rem; padding: clamp(18px, 3vw, 24px); display: grid; gap: 0.75rem; max-width: 480px; }
+.qform__title { font-family: var(--font-display); font-size: 1.15rem; color: var(--ink); letter-spacing: -0.015em; }
+.qform__row { display: grid; gap: 0.75rem; grid-template-columns: 1fr 1fr; }
+@media (max-width: 420px) { .qform__row { grid-template-columns: 1fr; } }
+.qform__field { display: grid; gap: 0.3rem; font-size: 0.78rem; color: var(--slate); font-weight: 500; }
+.qform__field em { font-weight: 300; font-style: normal; color: var(--mist); }
+.qform__field input, .qform__field textarea { width: 100%; font: inherit; font-size: 0.95rem; font-weight: 400; color: var(--ink);
+  background: rgba(255,255,255,0.7); border: 1px solid var(--line-2); border-radius: 10px; padding: 9px 12px; resize: vertical; }
+.qform__field input:focus, .qform__field textarea:focus { outline: none; border-color: var(--sky); box-shadow: 0 0 0 3px rgba(63,142,216,0.18); }
+.qform__consent { display: grid; grid-template-columns: auto 1fr; gap: 0.6rem; align-items: start; font-size: 0.72rem; line-height: 1.45; color: var(--slate-2); }
+.qform__consent input { width: 16px; height: 16px; margin-top: 2px; accent-color: var(--sky); }
+.qform__consent a { color: var(--sky-deep); text-decoration: underline; }
+.qform__hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.qform__status { font-size: 0.82rem; min-height: 1.2em; }
+.qform__status.is-ok { color: var(--teal); }
+.qform__status.is-error { color: var(--coral-deep); }
+.qform button[disabled] { opacity: 0.6; pointer-events: none; }
+
+.footer__legal { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+.footer__legal a { color: #8aa0bd; transition: color 0.2s; }
+.footer__legal a:hover { color: #fff; }
+
 .book__email { margin-top: 1.6rem; color: var(--slate); font-size: 0.92rem; }
 .book__email a { color: var(--sky-deep); border-bottom: 1px solid var(--line-2); }
 .signature { font-family: var(--font-script); font-size: 2.6rem; color: var(--gold-deep); margin-top: 1rem; line-height: 1; }
 
-.calendly-wrap { overflow: hidden; padding: 0; }
-.calendly-inline-widget { display: block; }
+.calendly-wrap { overflow: hidden; padding: 0; position: relative; }
+.calendly-inline-widget { display: block; position: relative; z-index: 1; }
+
+/* Loading skeleton: shows immediately, sits behind the widget. Calendly injects
+   an opaque white iframe (z-index above) which covers this once it loads. */
+.calendly-loading { position: absolute; inset: 0; z-index: 0; display: flex;
+  flex-direction: column; align-items: center; justify-content: center; gap: 1.1rem;
+  text-align: center; padding: 24px; }
+.calendly-loading__spinner { width: 40px; height: 40px; border-radius: 50%;
+  border: 3px solid var(--line-2); border-top-color: var(--sky);
+  animation: calSpin 0.8s linear infinite; }
+.calendly-loading__text { font-family: var(--font-display); font-size: 1.05rem;
+  color: var(--slate); margin: 0; letter-spacing: -0.01em; }
+@keyframes calSpin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .calendly-loading__spinner { animation-duration: 2s; } }
 .calendly-placeholder { padding: clamp(24px, 4vw, 34px); }
 .calendly-placeholder__title { font-family: var(--font-display); font-size: 1.38rem; font-weight: 400; color: var(--ink); margin: 0.4rem 0 1.3rem; letter-spacing: -0.015em; }
 .calendly-placeholder__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.7rem; margin-bottom: 1.4rem; }

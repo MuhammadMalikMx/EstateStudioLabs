@@ -1,0 +1,16 @@
+/* Legal pages (privacy.html, terms.html) — layered on styles.css tokens */
+.legal { max-width: 760px; margin: 0 auto; padding: clamp(28px, 6vw, 64px) var(--pad) clamp(48px, 8vw, 90px); }
+.legal__back { display: inline-flex; align-items: center; gap: 0.6rem; margin-bottom: 2rem; }
+.legal__back img { height: 26px; width: auto; }
+.legal__card { padding: clamp(24px, 5vw, 48px); }
+.legal h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--ink); letter-spacing: -0.025em; line-height: 1.1; }
+.legal__updated { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sky-deep); margin: 0.9rem 0 2rem; }
+.legal h2 { font-family: var(--font-display); font-weight: 400; font-size: 1.35rem; color: var(--ink); letter-spacing: -0.015em; margin: 2rem 0 0.7rem; }
+.legal p, .legal li { color: var(--slate); font-weight: 300; line-height: 1.65; }
+.legal p + p { margin-top: 0.8rem; }
+.legal ul { padding-left: 1.2rem; display: grid; gap: 0.4rem; margin-top: 0.6rem; }
+.legal a { color: var(--sky-deep); border-bottom: 1px solid var(--line-2); }
+.legal strong { color: var(--ink); font-weight: 500; }
+.legal__callout { margin-top: 1rem; padding: 14px 18px; border-left: 3px solid var(--sky); background: rgba(255,255,255,0.6); border-radius: 0 10px 10px 0; }
+.legal__foot { margin-top: 2rem; font-size: 0.8rem; color: var(--slate-2); text-align: center; }
+.legal__foot a { margin: 0 0.5rem; }
