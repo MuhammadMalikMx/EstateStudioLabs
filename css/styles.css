@@ -522,6 +522,7 @@ em { font-style: italic; }
 .qform__status.is-error { color: var(--coral-deep); }
 .qform button[disabled] { opacity: 0.6; pointer-events: none; }
 
+.footer__addr { font-size: 0.72rem; opacity: 0.7; }
 .footer__legal { display: flex; gap: 1.2rem; flex-wrap: wrap; }
 .footer__legal a { color: #8aa0bd; transition: color 0.2s; }
 .footer__legal a:hover { color: #fff; }
